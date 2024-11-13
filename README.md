@@ -1,3 +1,4 @@
+
 # Assignment API
 
 The Assignment API will be used to complete each of the assignments using JavaScript Frameworks.
@@ -28,3 +29,44 @@ Follow the instructions below to get your API set up and ready for use.
    ```bash
    echo "NODE_ENV=production" >> .env
    echo "API_KEY=your-64-character-random-key" >> .env
+   ```
+2. You can generate a random 64-character API key (e.g., using [passwordsgenerator.net](https://passwordsgenerator.net/)).
+
+3. Close the terminal, and your Glitch project will automatically use the `.env` file with the values set above.
+
+### Starting the API
+
+1. In Glitch, open the `package.json` file and check that the `"start"` script is configured as follows:
+   ```json
+   "scripts": {
+     "start": "json-server --watch db.json --port 3000"
+   }
+   ```
+2. Click the **Show** button in the top-left corner to open your API in a new tab. Your API's URL will be in the format:
+   ```
+   https://your-glitch-project-name.glitch.me
+   ```
+
+## API Key and Authorization Header
+
+To access protected endpoints (such as `POST`, `PUT`, `PATCH`, and `DELETE`), include the `X-API-KEY` header in your requests. The API key should match the one you set in your `.env` file.
+
+### Example Request with `X-API-KEY` Header
+
+Here’s how to include the API key in a request:
+```bash
+curl -X POST https://your-glitch-project-name.glitch.me/resource -H "X-API-KEY: your-64-character-random-key"
+```
+
+## Accessing Endpoints
+
+- **Open Endpoints**: All `GET` endpoints are open to access without the `X-API-KEY` header.
+- **Protected Endpoints**: All other methods (`POST`, `PUT`, `PATCH`, and `DELETE`) require the `X-API-KEY` header with the correct API key.
+
+---
+
+# Special thanks to Typicode for json-server
+
+[Github: json-server](https://github.com/typicode/json-server)
+
+---
